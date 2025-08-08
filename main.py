@@ -1,4 +1,5 @@
 from fastapi import FastAPI, HTTPException
+import os
 
 
 
@@ -22,6 +23,8 @@ async def health_check():
     return {"status": "healthy", "version": "1.0.0"}
 
 
+port = int(os.environ.get("PORT",4000))
+app.run(host="0.0.0.0",port=port)
 
 # This file contains the WSGI configuration required to serve up your
 # web application at http://<your-username>.pythonanywhere.com/
